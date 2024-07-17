@@ -16,6 +16,7 @@ pipeline {
             }
             steps {
                 sh '''
+                echo "Testing Github SCM Polling"
                 ls -la
                 node --version
                 npm --version
@@ -94,10 +95,5 @@ pipeline {
                 '''
             }
         }
-
-
-
     }
-
-
 }

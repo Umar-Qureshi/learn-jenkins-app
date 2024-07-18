@@ -78,7 +78,7 @@ pipeline {
         }
 
         stage('Deploy staging') {
-            agent{
+            agent {
                 docker {
                     image 'node:18-alpine'
                     reuseNode true
@@ -99,7 +99,7 @@ pipeline {
         }
 
         stage('Staging E2E'){
-            agent{
+            agent {
                 docker {
                     image 'mcr.microsoft.com/playwright:v1.39.0-jammy'
                     reuseNode true
@@ -108,13 +108,13 @@ pipeline {
             environment {
                 CI_ENVIRONMENT_URL = "${env.STAGING_URL}"
             }
-            steps{
+            steps {
                 echo 'E2E Test stage'
                 sh '''
                     npx playwright test --reporter=html
                 '''
             }
-            post{
+            post {
                 always {
                     publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'playwright-report', reportFiles: 'index.html', reportName: 'Staging E2E', reportTitles: '', useWrapperFileDirectly: true])
                 }

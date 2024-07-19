@@ -21,7 +21,7 @@ pipeline {
             }
             steps {
                 //Printing out values to show that node and npm are available in the container
-                // As well as building out what is in package.json
+                // As well as building out what is in package.jsonsss
                 sh '''
                 ls -la
                 node --version
@@ -82,6 +82,7 @@ pipeline {
                     }
                     post{
                         //Always publish the Playwright report whether it passed or failed
+                        //playright report checks to make sure all elements on the webpage exist
                         always {
                             publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'playwright-report', reportFiles: 'index.html', reportName: 'Playwright Local', reportTitles: '', useWrapperFileDirectly: true])
                         }
@@ -103,6 +104,7 @@ pipeline {
                 CI_ENVIRONMENT_URL = "STAGING_URL_TO_BE_SET"
             }
             steps {
+                // Netlify is a simple cloudhosting platform for web apps
                 // Install Netlify and use the local/non-global version
                 // Use Netlify command to deploy and save the outpu as a json file
                 // Read from the json to set the environment variable with the dynamic NON-Prod staging URL

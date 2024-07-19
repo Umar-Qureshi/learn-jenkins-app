@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        //Netlify is a simple cloudhosting platform for web apps
+        //Netlify is a simple cloudhosting platform for web appsss
         NETLIFY_SITE_ID = 'bf83a7aa-5739-42bd-a1a2-f6e9b04d3db8'
         NETLIFY_AUTH_TOKEN = credentials('netlify-token')
         REACT_APP_VERSION = "1.0.$BUILD_ID"
@@ -10,7 +10,7 @@ pipeline {
 
     stages {
 
-        // Builds the docker container worker and installs everything needed including node moduless
+        // Builds the docker container worker and installs everything needed including node modules
         stage('Build') {
             agent{
                 docker {

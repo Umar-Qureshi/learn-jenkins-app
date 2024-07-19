@@ -10,7 +10,7 @@ pipeline {
 
     stages {
 
-        // Builds the docker container worker and installs everything needed including node modules
+        // Builds the docker container worker and installs everything needed including node moduless
         stage('Build') {
             agent{
                 docker {
